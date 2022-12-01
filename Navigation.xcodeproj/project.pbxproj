@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BDB4B36A29384A480035F4EC /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4B36929384A480035F4EC /* ProfileHeaderView.swift */; };
 		BDEC521B2930ABF200119354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEC521A2930ABF200119354 /* AppDelegate.swift */; };
 		BDEC521D2930ABF200119354 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDEC521C2930ABF200119354 /* SceneDelegate.swift */; };
 		BDEC52242930ABF900119354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDEC52232930ABF900119354 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BDB4B36929384A480035F4EC /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		BDEC52172930ABF200119354 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDEC521A2930ABF200119354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDEC521C2930ABF200119354 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BDB4B36C29384A700035F4EC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BDB4B36929384A480035F4EC /* ProfileHeaderView.swift */,
+				BDEC52582930CA1000119354 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		BDEC520E2930ABF200119354 = {
 			isa = PBXGroup;
 			children = (
@@ -62,16 +73,16 @@
 		BDEC52192930ABF200119354 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				BDB4B36C29384A700035F4EC /* Profile */,
 				BDEC521A2930ABF200119354 /* AppDelegate.swift */,
 				BDEC521C2930ABF200119354 /* SceneDelegate.swift */,
 				BDEC52552930C9FE00119354 /* FeedViewController.swift */,
-				BDEC52582930CA1000119354 /* ProfileViewController.swift */,
 				BDEC525C2930D37500119354 /* PostViewController.swift */,
 				BDEC52612930F05600119354 /* Post.swift */,
 				BDEC526429311C5700119354 /* InfoViewController.swift */,
 				BDEC52282930ABF900119354 /* Info.plist */,
-				BDEC52252930ABF900119354 /* LaunchScreen.storyboard */,
 				BDEC52232930ABF900119354 /* Assets.xcassets */,
+				BDEC52252930ABF900119354 /* LaunchScreen.storyboard */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -152,6 +163,7 @@
 				BDEC52622930F05600119354 /* Post.swift in Sources */,
 				BDEC52562930C9FE00119354 /* FeedViewController.swift in Sources */,
 				BDEC521D2930ABF200119354 /* SceneDelegate.swift in Sources */,
+				BDB4B36A29384A480035F4EC /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
