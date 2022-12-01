@@ -34,11 +34,6 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .systemPurple
         view.addSubview(self.button)
         installButton(button: button)
-
-//        self.button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
-//        self.button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-//        self.button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-//        self.button.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 
     @objc private func buttonAction() {
