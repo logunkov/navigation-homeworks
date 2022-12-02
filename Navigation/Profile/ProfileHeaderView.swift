@@ -21,16 +21,18 @@ class ProfileHeaderView: UIView {
         return labelName
     }
 
-    var labelStatus: UILabel {
-            let labelStatus = UILabel(frame: CGRect(x: 170, y: 256 + 16 - 34 - 14, width: 204, height: 14))
-            //labelStatus.backgroundColor = .yellow
-            labelStatus.text = "Шпинат - Сила!"
-            labelStatus.numberOfLines = 0
-            labelStatus.font = UIFont.boldSystemFont(ofSize: 14)
-            labelStatus.textColor = .gray
-            labelStatus.textAlignment = .center
-            return labelStatus
-    }
+    var labelStatus: UILabel
+// Было
+//    {
+//        let labelStatus = UILabel(frame: CGRect(x: 170, y: 256 + 16 - 34 - 14, width: 204, height: 14))
+//        //labelStatus.backgroundColor = .yellow
+//        labelStatus.text = "Шпинат - Сила!"
+//        labelStatus.numberOfLines = 0
+//        labelStatus.font = UIFont.boldSystemFont(ofSize: 14)
+//        labelStatus.textColor = .gray
+//        labelStatus.textAlignment = .center
+//        return labelStatus
+//    }
 
     var button: UIButton {
         let button = UIButton(frame: CGRect(x: 16, y: 256 + 16 + 20, width: 374 - 16, height: 50))
@@ -54,6 +56,8 @@ class ProfileHeaderView: UIView {
         imageView.layer.borderWidth = 3
         imageView.layer.backgroundColor = UIColor.purple.cgColor
         imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.clipsToBounds = true
 
         return imageView
     }
@@ -74,7 +78,10 @@ class ProfileHeaderView: UIView {
     }
 
     init() {
+        // Стало
+        self.labelStatus = UILabel(frame: CGRect(x: 170, y: 256 + 16 - 34 - 14, width: 204, height: 14))
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        creatingLabelStatus()
         self.addSubview(labelName)
         self.addSubview(labelStatus)
         self.addSubview(imageView)
@@ -87,15 +94,23 @@ class ProfileHeaderView: UIView {
     }
 
     @objc private func buttonPressed() {
-        guard let text = statusText else { return }
-        print(labelStatus.text!)
-        labelStatus.text = text // Не знаю, почему не работает
-
+        labelStatus.text = statusText
+        print(labelStatus.text ?? "nil")
     }
 
     @objc private func statusTextChanged(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        statusText = text
-        labelStatus.text = text
+        if let text = textField.text {
+            statusText = text
+        }
+    }
+
+    func creatingLabelStatus() {
+        // Стало
+        //labelStatus.backgroundColor = .yellow
+        labelStatus.text = "Шпинат - Сила!"
+        labelStatus.numberOfLines = 0
+        labelStatus.font = UIFont.boldSystemFont(ofSize: 14)
+        labelStatus.textColor = .gray
+        labelStatus.textAlignment = .center
     }
 }
