@@ -54,8 +54,8 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Feed news"
         view.backgroundColor = .systemPurple
-//        view.addSubview(self.button)
         stackView.addArrangedSubview(buttonFirst)
         stackView.addArrangedSubview(buttonSecond)
         view.addSubview(self.stackView)
