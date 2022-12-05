@@ -37,11 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
         tabBar.viewControllers = [createFeedViewController(), createProfileViewController()]
+//        tabBar.viewControllers = [createProfileViewController(), createFeedViewController()]
         return tabBar
     }
-
-
-
 }
-
-
