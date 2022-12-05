@@ -10,11 +10,11 @@ import UIKit
 class FeedViewController: UIViewController {
     var post = Post(title: "My post")
 
-    private lazy var button: UIButton = {
+    var buttonFirst: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 12
-        button.setTitle("go to the post", for: .normal)
+        button.setTitle("Go", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -22,18 +22,44 @@ class FeedViewController: UIViewController {
         return button
     }()
 
-    private func installButton(button: UIButton){
-        self.button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
-        self.button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-        self.button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-        self.button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    var buttonSecond: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 12
+        button.setTitle("Push", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    var stackView: UIStackView = {
+        let stackView = UIStackView()
+//        stackView.backgroundColor = .black
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
+    private func installConstrains(){
+        NSLayoutConstraint.activate([
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPurple
-        view.addSubview(self.button)
-        installButton(button: button)
+//        view.addSubview(self.button)
+        stackView.addArrangedSubview(buttonFirst)
+        stackView.addArrangedSubview(buttonSecond)
+        view.addSubview(self.stackView)
+        installConstrains()
     }
 
     @objc private func buttonAction() {
