@@ -22,10 +22,12 @@ class InfoViewController: UIViewController {
     }()
 
     private func installButton(button: UIButton){
-        self.button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
-        self.button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-        self.button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-        self.button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        NSLayoutConstraint.activate([
+            self.button.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.button.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            self.button.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            self.button.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 
     override func viewDidLoad() {
@@ -37,10 +39,8 @@ class InfoViewController: UIViewController {
 
     @objc private func buttonAction() {
         let alert = UIAlertController(title: "Info", message: "Message", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { action in
-                                        print("Нажали кнопку \"Cancel\"")}))
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
-                                        print("Нажали кнопку \"OK\"")}))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { action in print("Нажали кнопку \"Cancel\"")}))
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in print("Нажали кнопку \"OK\"")}))
         self.present(alert, animated: true, completion: nil)
     }
 }

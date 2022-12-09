@@ -8,7 +8,7 @@
 import UIKit
 
 class PostViewController: UIViewController {
-    var titlePost: String = ""
+    lazy var titlePost: String = ""
 
     private lazy var barButtonItem : UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonAction))
