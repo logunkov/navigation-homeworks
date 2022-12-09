@@ -18,6 +18,9 @@ class LogInViewController: UIViewController {
 
     private lazy var textFieldLogin: UITextField = {
         let textField = UITextField()
+        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
+        textField.leftViewMode = .always
+        textField.leftView = spacerView
         textField.text = ""
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textColor = .black
@@ -28,7 +31,7 @@ class LogInViewController: UIViewController {
         textField.tintColor = UIColor.blue
         textField.autocapitalizationType = .none
         textField.textAlignment = .left
-        textField.placeholder = " Email of phone"
+        textField.placeholder = "Email of phone"
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -36,6 +39,9 @@ class LogInViewController: UIViewController {
 
     private lazy var textFieldPassword: UITextField = {
         let textField = UITextField()
+        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
+        textField.leftViewMode = .always
+        textField.leftView = spacerView
         textField.text = ""
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.textColor = .black
@@ -47,7 +53,7 @@ class LogInViewController: UIViewController {
         textField.autocapitalizationType = .none
         textField.textAlignment = .left
         textField.isSecureTextEntry = true
-        textField.placeholder = " Password"
+        textField.placeholder = "Password"
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -106,7 +112,7 @@ class LogInViewController: UIViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 
-            imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 320),
+            imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 120),
             imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 100),
             imageView.heightAnchor.constraint(equalToConstant: 100),
