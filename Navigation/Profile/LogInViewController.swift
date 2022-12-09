@@ -9,14 +9,14 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
-    var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    var textFieldLogin: UITextField = {
+    private lazy var textFieldLogin: UITextField = {
         let textField = UITextField()
         textField.text = ""
         textField.font = UIFont.systemFont(ofSize: 16)
@@ -34,7 +34,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
 
-    var textFieldPassword: UITextField = {
+    private lazy var textFieldPassword: UITextField = {
         let textField = UITextField()
         textField.text = ""
         textField.font = UIFont.systemFont(ofSize: 16)
@@ -53,7 +53,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
 
-    var button: UIButton = {
+    private lazy var button: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: UIControl.State.normal)
         button.layer.cornerRadius = 10
@@ -71,9 +71,9 @@ class LogInViewController: UIViewController {
         return button
     }()
 
-    var scrollView: UIScrollView = {
-//        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: 1000, height: 1000))
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
         scrollView.keyboardDismissMode = .interactive
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
@@ -101,14 +101,19 @@ class LogInViewController: UIViewController {
 
     private func installConstrains() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 320),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+
+            imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 320),
+            imageView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 100),
             imageView.heightAnchor.constraint(equalToConstant: 100),
 
             textFieldLogin.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 120),
-            textFieldLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            textFieldLogin.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            textFieldLogin.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            textFieldLogin.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             textFieldLogin.heightAnchor.constraint(equalToConstant: 50),
 
             textFieldPassword.topAnchor.constraint(equalTo: textFieldLogin.bottomAnchor),
@@ -120,15 +125,6 @@ class LogInViewController: UIViewController {
             button.leadingAnchor.constraint(equalTo: textFieldLogin.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: textFieldLogin.trailingAnchor),
             button.heightAnchor.constraint(equalTo: textFieldLogin.heightAnchor),
-
-            scrollView.heightAnchor.constraint(equalTo: self.view.heightAnchor),
-            scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
-//            scrollView.widthAnchor.constraint(equalToConstant: 1000),
-//            scrollView.heightAnchor.constraint(equalToConstant: 1000),
-            scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            scrollView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-
-
         ])
     }
 
@@ -150,10 +146,11 @@ class LogInViewController: UIViewController {
     @objc func kbWillShow(_ notification: Notification) {
         guard let kbFrameSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kbFrameSize.height - self.view.safeAreaInsets.bottom + 20, right: 0)
+
     }
 
     @objc func kbWillHide() {
-        scrollView.contentInset = .zero
+        self.scrollView.contentInset = .zero
     }
 
     @objc private func statusTextChanged() {
