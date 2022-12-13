@@ -12,9 +12,7 @@ class ProfileHeaderView: UIView {
     private var statusText: String?
 
     private lazy var labelName: UILabel = {
-//        let labelName = UILabel(frame: CGRect(x: 170, y: 90 + 27, width: 204, height: 18))
         let labelName = UILabel()
-        //labelName.backgroundColor = .yellow
         labelName.text = "Popeye the Sailor"
         labelName.font = UIFont.boldSystemFont(ofSize: 18)
         labelName.textColor = .black
@@ -24,9 +22,7 @@ class ProfileHeaderView: UIView {
     }()
 
     private lazy var labelStatus: UILabel = {
-//        let labelStatus = UILabel(frame: CGRect(x: 170, y: 256 + 16 - 34 - 14, width: 204, height: 14))
         let labelStatus = UILabel()
-        //labelStatus.backgroundColor = .yellow
         labelStatus.text = "Шпинат - Сила!"
         labelStatus.numberOfLines = 0
         labelStatus.font = UIFont.boldSystemFont(ofSize: 14)
@@ -37,7 +33,6 @@ class ProfileHeaderView: UIView {
     }()
 
     private lazy var button: UIButton = {
-//        let button = UIButton(frame: CGRect(x: 16, y: 256 + 16 + 20, width: 374 - 16, height: 50))
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.setTitle("Set status", for: .normal)
@@ -55,7 +50,6 @@ class ProfileHeaderView: UIView {
 
     private lazy var imageView: UIImageView = {
         let size = 150
-//        let imageView = UIImageView(frame: CGRect(x: 16, y: 90 + 16, width: size, height: size))
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
         imageView.image = UIImage(named: "popeye")
         imageView.layer.borderWidth = 3
@@ -68,7 +62,6 @@ class ProfileHeaderView: UIView {
     }()
 
     private lazy var textField: UITextField = {
-//        let textField = UITextField(frame: CGRect(x: 170, y: 256 - 12, width: 204, height: 40))
         let textField = UITextField()
         textField.text = ""
         textField.font = UIFont.systemFont(ofSize: 15)
