@@ -53,7 +53,6 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -105,13 +104,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = profileHeaderView
-        headerView.backgroundColor = .systemGray6
-        headerView.heightAnchor.constraint(equalToConstant: 240).isActive = true
+        headerView.backgroundColor = .lightGray
+        headerView.heightAnchor.constraint(equalToConstant: 225).isActive = true
 
         return headerView
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 240
+        return 225
     }
 }
