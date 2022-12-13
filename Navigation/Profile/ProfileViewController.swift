@@ -50,16 +50,10 @@ class ProfileViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-//        tableView.backgroundColor = .lightGray
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-//        tableView.backgroundColor = .white
-//        tableView.layer.borderColor = UIColor.gray.cgColor
-//        tableView.layer.borderWidth = 0.5
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
