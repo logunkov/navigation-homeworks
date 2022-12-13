@@ -64,7 +64,6 @@ class PostTableViewCell: UITableViewCell {
     private lazy var stackViewVertical: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-//        stackView.contentMode = .scaleAspectFit
         stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
