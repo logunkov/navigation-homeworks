@@ -8,7 +8,7 @@
 import UIKit
 
 class PostViewController: UIViewController {
-    lazy var titlePost: String = ""
+    lazy var titlePost: String = "Post"
 
     private lazy var barButtonItem : UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonAction))
@@ -18,7 +18,7 @@ class PostViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .green
+        self.view.backgroundColor = .lightGray
         self.navigationItem.title = titlePost
         navigationItem.rightBarButtonItem = barButtonItem
     }
