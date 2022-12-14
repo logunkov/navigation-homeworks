@@ -8,7 +8,7 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    private lazy var post = Post(title: "My post")
+//    private lazy var post = Post(title: "My post")
 
     private lazy var buttonFirst: UIButton = {
         let button = UIButton()
@@ -24,7 +24,7 @@ class FeedViewController: UIViewController {
 
     private lazy var buttonSecond: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemRed
         button.layer.cornerRadius = 12
         button.setTitle("Push", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -47,15 +47,17 @@ class FeedViewController: UIViewController {
 
     private func installConstrains(){
         NSLayoutConstraint.activate([
-        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Feed news"
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .white
         stackView.addArrangedSubview(buttonFirst)
         stackView.addArrangedSubview(buttonSecond)
         view.addSubview(self.stackView)
@@ -64,7 +66,7 @@ class FeedViewController: UIViewController {
 
     @objc private func buttonAction() {
         let postViewController = PostViewController()
-        postViewController.titlePost = post.title
+//        postViewController.titlePost = post.title
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
 }

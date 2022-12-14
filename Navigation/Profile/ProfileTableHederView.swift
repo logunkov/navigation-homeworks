@@ -12,9 +12,7 @@ class ProfileHeaderView: UIView {
     private var statusText: String?
 
     private lazy var labelName: UILabel = {
-//        let labelName = UILabel(frame: CGRect(x: 170, y: 90 + 27, width: 204, height: 18))
         let labelName = UILabel()
-        //labelName.backgroundColor = .yellow
         labelName.text = "Popeye the Sailor"
         labelName.font = UIFont.boldSystemFont(ofSize: 18)
         labelName.textColor = .black
@@ -24,9 +22,7 @@ class ProfileHeaderView: UIView {
     }()
 
     private lazy var labelStatus: UILabel = {
-//        let labelStatus = UILabel(frame: CGRect(x: 170, y: 256 + 16 - 34 - 14, width: 204, height: 14))
         let labelStatus = UILabel()
-        //labelStatus.backgroundColor = .yellow
         labelStatus.text = "Шпинат - Сила!"
         labelStatus.numberOfLines = 0
         labelStatus.font = UIFont.boldSystemFont(ofSize: 14)
@@ -37,10 +33,9 @@ class ProfileHeaderView: UIView {
     }()
 
     private lazy var button: UIButton = {
-//        let button = UIButton(frame: CGRect(x: 16, y: 256 + 16 + 20, width: 374 - 16, height: 50))
         let button = UIButton()
         button.backgroundColor = .systemBlue
-        button.setTitle("Set status", for: .normal)
+        button.setTitle("Show status", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 4
@@ -55,7 +50,6 @@ class ProfileHeaderView: UIView {
 
     private lazy var imageView: UIImageView = {
         let size = 150
-//        let imageView = UIImageView(frame: CGRect(x: 16, y: 90 + 16, width: size, height: size))
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
         imageView.image = UIImage(named: "popeye")
         imageView.layer.borderWidth = 3
@@ -68,8 +62,8 @@ class ProfileHeaderView: UIView {
     }()
 
     private lazy var textField: UITextField = {
-//        let textField = UITextField(frame: CGRect(x: 170, y: 256 - 12, width: 204, height: 40))
         let textField = UITextField()
+        textField.isHidden = true
         textField.text = ""
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.textColor = .black
@@ -100,8 +94,15 @@ class ProfileHeaderView: UIView {
     }
 
     @objc private func buttonPressed() {
-        labelStatus.text = statusText
-        print(labelStatus.text ?? "nil")
+
+        if textField.isHidden {
+            button.setTitle("Set status", for: .normal)
+        } else {
+            button.setTitle("Show status", for: .normal)
+            labelStatus.text = statusText
+            print(labelStatus.text ?? "nil")
+        }
+        textField.isHidden = !textField.isHidden
     }
 
     @objc private func statusTextChanged(_ textField: UITextField) {
@@ -117,7 +118,7 @@ class ProfileHeaderView: UIView {
             imageView.widthAnchor.constraint(equalToConstant: 150),
             imageView.heightAnchor.constraint(equalToConstant: 150),
 
-            button.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            button.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
             button.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             button.heightAnchor.constraint(equalToConstant: 50),
@@ -125,15 +126,15 @@ class ProfileHeaderView: UIView {
             labelName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             labelName.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
             labelName.trailingAnchor.constraint(equalTo: button.trailingAnchor),
-
             textField.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
             textField.trailingAnchor.constraint(equalTo: button.trailingAnchor),
             textField.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -8),
+
             textField.heightAnchor.constraint(equalToConstant: 40),
 
             labelStatus.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
             labelStatus.trailingAnchor.constraint(equalTo: button.trailingAnchor),
-            labelStatus.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -8)
+            labelStatus.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -20)
         ])
     }
 }
