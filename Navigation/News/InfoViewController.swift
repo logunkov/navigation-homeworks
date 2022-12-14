@@ -32,7 +32,8 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .yellow
+        self.navigationItem.title = "Info"
+        self.view.backgroundColor = .lightGray
         view.addSubview(self.button)
         installButton(button: button)
     }
