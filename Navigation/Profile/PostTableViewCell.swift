@@ -8,7 +8,7 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-
+    
     private lazy var spaceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
@@ -17,7 +17,7 @@ class PostTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     var author: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -60,7 +60,7 @@ class PostTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     private lazy var stackViewVertical: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -68,7 +68,7 @@ class PostTableViewCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
+    
     private lazy var stackViewHorizontal: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -76,10 +76,10 @@ class PostTableViewCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        
         contentView.addSubview(stackViewVertical)
         stackViewVertical.addArrangedSubview(spaceLabel)
         stackViewVertical.addArrangedSubview(author)
@@ -88,7 +88,7 @@ class PostTableViewCell: UITableViewCell {
         stackViewVertical.addArrangedSubview(stackViewHorizontal)
         stackViewHorizontal.addArrangedSubview(likes)
         stackViewHorizontal.addArrangedSubview(views)
-
+        
         installConstrains()
     }
     
@@ -100,16 +100,16 @@ class PostTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             imageNews.widthAnchor.constraint(equalTo: stackViewVertical.widthAnchor),
             imageNews.heightAnchor.constraint(equalTo: stackViewVertical.widthAnchor),
-
+            
             imageNews.leadingAnchor.constraint(equalTo: stackViewVertical.leadingAnchor),
-
+            
             author.leadingAnchor.constraint(equalTo: stackViewVertical.leadingAnchor, constant: 16),
             author.trailingAnchor.constraint(equalTo: stackViewVertical.trailingAnchor, constant: -16),
-
+            
             descriptionText.trailingAnchor.constraint(equalTo: stackViewVertical.trailingAnchor, constant: -16),
-
+            
             stackViewHorizontal.trailingAnchor.constraint(equalTo: stackViewVertical.trailingAnchor, constant: -16),
-
+            
             stackViewVertical.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stackViewVertical.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackViewVertical.topAnchor.constraint(equalTo: contentView.topAnchor),
