@@ -93,8 +93,9 @@ class PhotosTableViewCell: UITableViewCell {
     }
     
     private func installConstrains() {
+        let size = CGFloat(floor((contentView.frame.width - 3 * 8) / 4))
         NSLayoutConstraint.activate([
-            imageFirst.heightAnchor.constraint(equalTo: stackViewHorizontalPhoto.widthAnchor, multiplier: 0.25),
+            imageFirst.heightAnchor.constraint(equalToConstant: size),
             stackViewVertical.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             stackViewVertical.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             stackViewVertical.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
