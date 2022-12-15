@@ -8,16 +8,7 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-
-    private lazy var spaceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = .black
-        label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
+    
     var author: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -61,7 +52,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var stackViewVertical: UIStackView = {
+    private lazy var stackViewHeaderVertical: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -69,6 +60,14 @@ class PostTableViewCell: UITableViewCell {
         return stackView
     }()
 
+    private lazy var stackViewVertical: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     private lazy var stackViewHorizontal: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -76,19 +75,17 @@ class PostTableViewCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        contentView.addSubview(author)
+        contentView.addSubview(imageNews)
         contentView.addSubview(stackViewVertical)
-        stackViewVertical.addArrangedSubview(spaceLabel)
-        stackViewVertical.addArrangedSubview(author)
-        stackViewVertical.addArrangedSubview(imageNews)
         stackViewVertical.addArrangedSubview(descriptionText)
         stackViewVertical.addArrangedSubview(stackViewHorizontal)
         stackViewHorizontal.addArrangedSubview(likes)
         stackViewHorizontal.addArrangedSubview(views)
-
+        
         installConstrains()
     }
     
@@ -97,26 +94,26 @@ class PostTableViewCell: UITableViewCell {
     }
     
     private func installConstrains() {
+
+        let size = CGFloat(floor((contentView.frame.width)))
+
         NSLayoutConstraint.activate([
-            imageNews.widthAnchor.constraint(equalTo: stackViewVertical.widthAnchor),
-            imageNews.heightAnchor.constraint(equalTo: stackViewVertical.widthAnchor),
+            author.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            author.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            author.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
 
-            imageNews.leadingAnchor.constraint(equalTo: stackViewVertical.leadingAnchor),
+            imageNews.heightAnchor.constraint(equalToConstant: size),
+            imageNews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageNews.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageNews.topAnchor.constraint(equalTo: author.bottomAnchor, constant: 16),
+            imageNews.bottomAnchor.constraint(equalTo: stackViewVertical.topAnchor, constant: -16),
 
-            author.leadingAnchor.constraint(equalTo: stackViewVertical.leadingAnchor, constant: 16),
-            author.trailingAnchor.constraint(equalTo: stackViewVertical.trailingAnchor, constant: -16),
-
-            descriptionText.trailingAnchor.constraint(equalTo: stackViewVertical.trailingAnchor, constant: -16),
-
-            stackViewHorizontal.trailingAnchor.constraint(equalTo: stackViewVertical.trailingAnchor, constant: -16),
-
-            stackViewVertical.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackViewVertical.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stackViewVertical.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackViewVertical.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            stackViewVertical.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             stackViewVertical.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         author.text = nil

@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     private let authorArray = [
         "Екатерина Кулешова",
         "Валентин Сонин",
@@ -28,8 +28,7 @@ class ProfileViewController: UIViewController {
     private let imageArray = ["image1", "image2", "image3", "image4", "image5", "image6"]
     private let likesArray = [10, 20, 30, 40, 50 ,60]
     private let viewsArray = [100, 200, 300, 400, 500 ,600]
-
-
+    
     private lazy var dataSource: [Post] = {
         var dataSource: [Post] = []
         for index in 0..<authorArray.count {
@@ -41,36 +40,36 @@ class ProfileViewController: UIViewController {
         }
         return dataSource
     }()
-
+    
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView()
-//        view.backgroundColor = .lightGray
         return view
     }()
-
+    
     private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.dataSource = self
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationItem.title = "Profile"
+        self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .lightGray
         self.view.addSubview(tableView)
         installConstrains()
-
+        
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.touch))
-        recognizer.numberOfTapsRequired = 1
+        recognizer.numberOfTapsRequired = 2
         recognizer.numberOfTouchesRequired = 1
         view.addGestureRecognizer(recognizer)
     }
-
+    
     private func installConstrains() {
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -80,37 +79,49 @@ class ProfileViewController: UIViewController {
         ])
     }
     @objc func touch() {
-           self.view.endEditing(true)
+        self.view.endEditing(true)
     }
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return dataSource.count + 1
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! PostTableViewCell
-        let article = dataSource[indexPath.row]
-
-        cell.author.text = article.author
-        cell.imageNews.image = UIImage(named: article.image)
-        cell.descriptionText.text = article.description
-        cell.likes.text = "Likes: \(article.likes)"
-        cell.views.text = "Views: \(article.views)"
-
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as! PhotosTableViewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! PostTableViewCell
+            let article = dataSource[indexPath.row - 1]
+            
+            cell.author.text = article.author
+            cell.imageNews.image = UIImage(named: article.image)
+            cell.descriptionText.text = article.description
+            cell.likes.text = "Likes: \(article.likes)"
+            cell.views.text = "Views: \(article.views)"
+            
+            return cell
+        }
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = profileHeaderView
         headerView.backgroundColor = .lightGray
         headerView.heightAnchor.constraint(equalToConstant: 225).isActive = true
-
+        
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 225
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let photosViewController = PhotosViewController()
+            self.navigationController?.pushViewController(photosViewController, animated: true)
+        }
     }
 }

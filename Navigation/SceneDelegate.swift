@@ -21,13 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func createFeedViewController() -> UINavigationController {
         let nvc = UINavigationController(rootViewController: FeedViewController())
-        nvc.tabBarItem = UITabBarItem(title: "Feed news", image: UIImage(systemName: "tv"), tag: 0)
+        nvc.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house"), tag: 0)
         return nvc
     }
 
     func createProfileViewController() -> UINavigationController {
 //        let nvc = UINavigationController(rootViewController: ProfileViewController())
         let nvc = UINavigationController(rootViewController: LogInViewController())
+//        let nvc = UINavigationController(rootViewController: PhotosViewController())
         nvc.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
         return nvc
     }
