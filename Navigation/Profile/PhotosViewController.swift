@@ -7,9 +7,9 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController {
+final class PhotosViewController: UIViewController {
     
-    private lazy var layout: UICollectionViewFlowLayout = {
+    private let layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 8
@@ -27,7 +27,7 @@ class PhotosViewController: UIViewController {
         return collectionView
     }()
     
-    private lazy var dataSource: [UIImageView] = {
+    private let dataSource: [UIImageView] = {
         var imageArray: [UIImageView] = []
         for index in 1...20 {
             let imageView = UIImageView()

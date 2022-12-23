@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+final class ProfileHeaderView: UIView {
 
     private var statusText: String?
 
-    private lazy var labelName: UILabel = {
+    private let labelName: UILabel = {
         let labelName = UILabel()
         labelName.text = "Popeye the Sailor"
         labelName.font = UIFont.boldSystemFont(ofSize: 18)
@@ -21,7 +21,7 @@ class ProfileHeaderView: UIView {
         return labelName
     }()
 
-    private lazy var labelStatus: UILabel = {
+    private let labelStatus: UILabel = {
         let labelStatus = UILabel()
         labelStatus.text = "Шпинат - Сила!"
         labelStatus.numberOfLines = 0
@@ -32,7 +32,7 @@ class ProfileHeaderView: UIView {
         return labelStatus
     }()
 
-    private lazy var button: UIButton = {
+    private let button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.setTitle("Show status", for: .normal)
@@ -48,7 +48,7 @@ class ProfileHeaderView: UIView {
         return button
     }()
 
-    private lazy var imageView: UIImageView = {
+    let imageView: UIImageView = {
         let size = 150
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
         imageView.image = UIImage(named: "popeye")
@@ -57,11 +57,12 @@ class ProfileHeaderView: UIView {
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private lazy var textField: UITextField = {
+    private let textField: UITextField = {
         let textField = UITextField()
         textField.isHidden = true
         textField.text = ""
@@ -114,25 +115,25 @@ class ProfileHeaderView: UIView {
     private func installConstrains() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            imageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             imageView.widthAnchor.constraint(equalToConstant: 150),
             imageView.heightAnchor.constraint(equalToConstant: 150),
 
-            button.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4),
-            button.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            button.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 169),
+            button.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             button.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             button.heightAnchor.constraint(equalToConstant: 50),
 
             labelName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
-            labelName.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
+            labelName.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 160),
             labelName.trailingAnchor.constraint(equalTo: button.trailingAnchor),
-            textField.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
+            textField.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
             textField.trailingAnchor.constraint(equalTo: button.trailingAnchor),
             textField.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -8),
 
             textField.heightAnchor.constraint(equalToConstant: 40),
 
-            labelStatus.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
+            labelStatus.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
             labelStatus.trailingAnchor.constraint(equalTo: button.trailingAnchor),
             labelStatus.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -20)
         ])

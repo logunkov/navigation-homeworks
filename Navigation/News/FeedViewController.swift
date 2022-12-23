@@ -7,10 +7,9 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
-//    private lazy var post = Post(title: "My post")
+final class FeedViewController: UIViewController {
 
-    private lazy var buttonFirst: UIButton = {
+    private let buttonFirst: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 12
@@ -22,7 +21,7 @@ class FeedViewController: UIViewController {
         return button
     }()
 
-    private lazy var buttonSecond: UIButton = {
+    private let buttonSecond: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 12
@@ -34,7 +33,7 @@ class FeedViewController: UIViewController {
         return button
     }()
 
-    private lazy var stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
 //        stackView.backgroundColor = .black
         stackView.axis = .vertical
@@ -66,7 +65,6 @@ class FeedViewController: UIViewController {
 
     @objc private func buttonAction() {
         let postViewController = PostViewController()
-//        postViewController.titlePost = post.title
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
 }
