@@ -7,16 +7,16 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+final class LogInViewController: UIViewController {
 
-    private lazy var imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private lazy var textFieldLogin: UITextField = {
+    private let textFieldLogin: UITextField = {
         let textField = UITextField()
         let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
         textField.leftViewMode = .always
@@ -37,7 +37,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
 
-    private lazy var textFieldPassword: UITextField = {
+    private let textFieldPassword: UITextField = {
         let textField = UITextField()
         let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
         textField.leftViewMode = .always
@@ -59,7 +59,7 @@ class LogInViewController: UIViewController {
         return textField
     }()
 
-    private lazy var button: UIButton = {
+    private let button: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: UIControl.State.normal)
         button.layer.cornerRadius = 10
@@ -77,7 +77,7 @@ class LogInViewController: UIViewController {
         return button
     }()
 
-    private lazy var scrollView: UIScrollView = {
+    private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
         scrollView.keyboardDismissMode = .interactive

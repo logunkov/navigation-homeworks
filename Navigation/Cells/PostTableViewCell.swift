@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PostTableViewCell: UITableViewCell {
+final class PostTableViewCell: UITableViewCell {
     
     var author: UILabel = {
         let label = UILabel()
@@ -52,7 +52,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var stackViewHeaderVertical: UIStackView = {
+    private let stackViewHeaderVertical: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -60,7 +60,7 @@ class PostTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    private lazy var stackViewVertical: UIStackView = {
+    private let stackViewVertical: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -68,7 +68,7 @@ class PostTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private lazy var stackViewHorizontal: UIStackView = {
+    private let stackViewHorizontal: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 16

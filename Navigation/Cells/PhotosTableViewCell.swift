@@ -7,9 +7,9 @@
 
 import UIKit
 
-class PhotosTableViewCell: UITableViewCell {
+final class PhotosTableViewCell: UITableViewCell {
     
-    private lazy var label: UILabel = {
+    private let label: UILabel = {
         let label = UILabel()
         label.text = "Photos"
         label.font = UIFont.boldSystemFont(ofSize: 24)
@@ -19,7 +19,7 @@ class PhotosTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var rightArrow: UIImageView = {
+    private let rightArrow: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "arrow.right")
         image.tintColor = .black
@@ -28,7 +28,7 @@ class PhotosTableViewCell: UITableViewCell {
         return image
     }()
     
-    private lazy var stackViewHorizontalHeader: UIStackView = {
+    private let stackViewHorizontalHeader: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 12
@@ -36,7 +36,7 @@ class PhotosTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private lazy var stackViewHorizontalPhoto: UIStackView = {
+    private let stackViewHorizontalPhoto: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal
@@ -45,7 +45,7 @@ class PhotosTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private lazy var stackViewVertical: UIStackView = {
+    private let stackViewVertical: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
@@ -53,10 +53,10 @@ class PhotosTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private lazy var imageFirst:    UIImageView = { UIImageView() }()
-    private lazy var imageSecond:   UIImageView = { UIImageView() }()
-    private lazy var imageThird:    UIImageView = { UIImageView() }()
-    private lazy var imageFourth:   UIImageView = { UIImageView() }()
+    private let imageFirst:    UIImageView = { UIImageView() }()
+    private let imageSecond:   UIImageView = { UIImageView() }()
+    private let imageThird:    UIImageView = { UIImageView() }()
+    private let imageFourth:   UIImageView = { UIImageView() }()
     private lazy var imageArray = [imageFirst, imageSecond, imageThird, imageFourth]
     
     private func installImage() {

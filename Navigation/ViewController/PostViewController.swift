@@ -7,14 +7,10 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
-    lazy var titlePost: String = "Post"
+final class PostViewController: UIViewController {
+    let titlePost: String = "Post"
 
-    private lazy var barButtonItem : UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonAction))
-
-        return barButtonItem
-    }()
+    private lazy var barButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(buttonAction))
 
     override func viewDidLoad() {
         super.viewDidLoad()

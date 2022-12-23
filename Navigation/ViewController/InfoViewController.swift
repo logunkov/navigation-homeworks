@@ -7,9 +7,9 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+final class InfoViewController: UIViewController {
 
-    private lazy var button: UIButton = {
+    private let button: UIButton = {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 12

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class PhotosCollectionViewCell: UICollectionViewCell {
+final class PhotosCollectionViewCell: UICollectionViewCell {
 
-    lazy var photoImage: UIImageView = {
+    let photoImage: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
