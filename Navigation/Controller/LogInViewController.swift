@@ -9,6 +9,9 @@ import UIKit
 
 final class LogInViewController: UIViewController {
 
+    private let login = "admin@mail.ru"
+    private let password = "12345678"
+
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
@@ -144,7 +147,7 @@ final class LogInViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    func subscribeKeyboardEvents() {
+    private func subscribeKeyboardEvents() {
         NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
@@ -168,7 +171,45 @@ final class LogInViewController: UIViewController {
     }
 
     @objc private func buttonAction() {
+
+        guard let login = textFieldLogin.text, !login.isEmpty else {
+            textFieldLogin.shake()
+            return
+        }
+
+        guard let password = textFieldPassword.text, !password.isEmpty else {
+            textFieldPassword.shake()
+            return
+        }
+
+        guard password.count > 7  else {
+            let alert = UIAlertController(title: "Acces denied", message: "The number of password characters is less than 8", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+
+        guard self.login == login && self.password == password else {
+            let alert = UIAlertController(title: "Acces denied", message: "You didn't write correct login or password", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+
         let profileViewController = ProfileViewController()
         self.navigationController?.pushViewController(profileViewController, animated: true)
+    }
+}
+
+extension UITextField {
+
+    func shake() {
+        let shakeAnimation = CABasicAnimation(keyPath: "position")
+        shakeAnimation.duration = 0.1
+        shakeAnimation.repeatCount = 6
+        shakeAnimation.autoreverses = true
+        shakeAnimation.fromValue = CGPoint(x: self.center.x - 4, y: self.center.y)
+        shakeAnimation.toValue = CGPoint(x: self.center.x + 4, y: self.center.y)
+        layer.add(shakeAnimation, forKey: "position")
     }
 }
