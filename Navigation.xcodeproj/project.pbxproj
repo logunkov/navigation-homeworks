@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD1E9298295C46B700F039EA /* ShowPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1E9297295C46B700F039EA /* ShowPostViewController.swift */; };
 		BDB4B36A29384A480035F4EC /* ProfileTableHederView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4B36929384A480035F4EC /* ProfileTableHederView.swift */; };
 		BDC9B41029418373003A4163 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9B40F29418373003A4163 /* LogInViewController.swift */; };
 		BDC9B4222948226D003A4163 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC9B4212948226D003A4163 /* PostTableViewCell.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD1E9297295C46B700F039EA /* ShowPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPostViewController.swift; sourceTree = "<group>"; };
 		BDB4B36929384A480035F4EC /* ProfileTableHederView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHederView.swift; sourceTree = "<group>"; };
 		BDC9B40F29418373003A4163 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BDC9B4212948226D003A4163 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				BDC9B431294A0A57003A4163 /* PhotosViewController.swift */,
 				BDEC525C2930D37500119354 /* PostViewController.swift */,
 				BDEC52582930CA1000119354 /* ProfileViewController.swift */,
+				BD1E9297295C46B700F039EA /* ShowPostViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				BDC9B432294A0A5A003A4163 /* PhotosViewController.swift in Sources */,
 				BDEC521D2930ABF200119354 /* SceneDelegate.swift in Sources */,
 				BDB4B36A29384A480035F4EC /* ProfileTableHederView.swift in Sources */,
+				BD1E9298295C46B700F039EA /* ShowPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
