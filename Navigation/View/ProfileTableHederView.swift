@@ -99,6 +99,12 @@ final class ProfileHeaderView: UIView {
         if textField.isHidden {
             button.setTitle("Set status", for: .normal)
         } else {
+
+            guard let text = textField.text, !text.isEmpty else {
+                textField.shake()
+                return
+            }
+
             button.setTitle("Show status", for: .normal)
             labelStatus.text = statusText
             print(labelStatus.text ?? "nil")
