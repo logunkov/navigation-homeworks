@@ -26,8 +26,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func createProfileViewController() -> UINavigationController {
-//        let nvc = UINavigationController(rootViewController: ProfileViewController())
-        let nvc = UINavigationController(rootViewController: LogInViewController())
+        let nvc = UINavigationController(rootViewController: ProfileViewController())
+//        let nvc = UINavigationController(rootViewController: LogInViewController())
 //        let nvc = UINavigationController(rootViewController: PhotosViewController())
         nvc.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
         return nvc
@@ -35,8 +35,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        tabBar.viewControllers = [createFeedViewController(), createProfileViewController()]
-//        tabBar.viewControllers = [createProfileViewController(), createFeedViewController()]
+//        tabBar.viewControllers = [createFeedViewController(), createProfileViewController()]
+        tabBar.viewControllers = [createProfileViewController(), createFeedViewController()]
         return tabBar
     }
 }

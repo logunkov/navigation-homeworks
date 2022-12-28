@@ -8,43 +8,11 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
-    
-//    private let authorArray = [
-//        "Екатерина Кулешова",
-//        "Валентин Сонин",
-//        "Екатерина Кулешова",
-//        "Валентин Сонин",
-//        "Владимир Макаров",
-//        "Екатерина Кулешова",
-//    ]
-//    private let descriptionArray = [
-//        "Анонс новой игры NetherRealm может состояться в течение полугода — на это намекнул Эд Бун, творческий руководитель студии и создатель Mortal Kombat и Injustice.",
-//        "Пользователи сети обратили внимание, что сиквел «Человека-паука» Insomniac уже можно добавить в список желаемого PS Store — пока, правда, лишь в Британии.",
-//        "На канале IGN появился очередной ролик, посвящённый ремейку Dead Space. В этот раз разработчики игры из Motive Studios рассказали о том, какие изменения были внесены в плазменный резак.",
-//        "Актёр Камерон Монахэн, который играл Кэла Кестиса в Star Wars Jedi: Fallen Order, рассказал об эволюции своего героя в Star Wars Jedi: Survivor.",
-//        "Dwarf Fortress, на этой неделе вышедшая в Steam и за первые сутки выполнившая план продаж на два месяца, стартовала со второй строчки местного чарта, где товары и игры упорядочены по выручке за семь дней. Да, игра не смогла обойти Steam Deck.",
-//        "Нил Дракманн, геймдиректор обеих The Last of Us и Uncharted 4, подтвердил в своём Twitter-аккаунте, что The Last of Us: Part I выйдет на Steam Deck."
-//    ]
-//    private let imageArray = ["image1", "image2", "image3", "image4", "image5", "image6"]
-//    private let likesArray = [10, 20, 30, 40, 50 ,60]
-//    private let viewsArray = [100, 200, 300, 400, 500 ,600]
 
     private var avatarWidthConstraint: NSLayoutConstraint!
     private var avatarHeightConstraint: NSLayoutConstraint!
     private var avatarXCenterConstraint: NSLayoutConstraint!
     private var avatarYCenterConstraint: NSLayoutConstraint!
-    
-//    private lazy var dataSource: [Post] = {
-//        var dataSource: [Post] = []
-//        for index in 0..<authorArray.count {
-//            dataSource.append(Post(author: authorArray[index],
-//                                   description: descriptionArray[index],
-//                                   image: imageArray[index],
-//                                   likes: likesArray[index],
-//                                   views: viewsArray[index]))
-//        }
-//        return dataSource
-//    }()
 
     private let profileHeaderView = ProfileHeaderView()
     
@@ -260,6 +228,15 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             let photosViewController = PhotosViewController()
             self.navigationController?.pushViewController(photosViewController, animated: true)
+        } else {
+            let showPostViewController = ShowPostViewController()
+            let article = dataSource[indexPath.row - 1]
+            showPostViewController.author.text = article.author
+            showPostViewController.imageNews.image = UIImage(named: article.image)
+            showPostViewController.descriptionText.text = article.description
+            showPostViewController.likes.text = "Likes: \(article.likes)"
+            showPostViewController.views.text = "Views: \(article.views)"
+            self.navigationController?.pushViewController(showPostViewController, animated: true)
         }
     }
 }
