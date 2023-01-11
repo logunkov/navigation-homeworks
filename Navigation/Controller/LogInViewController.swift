@@ -80,6 +80,18 @@ final class LogInViewController: UIViewController {
         return button
     }()
 
+    private let labelError: UILabel = {
+        let label = UILabel()
+        label.text = "Invalid password: The number of password characters is less than 8"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .red
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 1000)
@@ -98,6 +110,7 @@ final class LogInViewController: UIViewController {
         self.scrollView.addSubview(textFieldLogin)
         self.scrollView.addSubview(textFieldPassword)
         self.scrollView.addSubview(button)
+        self.scrollView.addSubview(labelError)
         self.view.addSubview(scrollView)
 
         installConstrains()
@@ -134,6 +147,11 @@ final class LogInViewController: UIViewController {
             button.leadingAnchor.constraint(equalTo: textFieldLogin.leadingAnchor),
             button.trailingAnchor.constraint(equalTo: textFieldLogin.trailingAnchor),
             button.heightAnchor.constraint(equalTo: textFieldLogin.heightAnchor),
+
+            labelError.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 16),
+            labelError.leadingAnchor.constraint(equalTo: textFieldLogin.leadingAnchor),
+            labelError.trailingAnchor.constraint(equalTo: textFieldLogin.trailingAnchor),
+            labelError.heightAnchor.constraint(equalTo: textFieldLogin.heightAnchor),
         ])
     }
 
@@ -182,15 +200,15 @@ final class LogInViewController: UIViewController {
             return
         }
 
-        guard password.count > 7  else {
-            let alert = UIAlertController(title: "Acces denied", message: "The number of password characters is less than 8", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
-            self.present(alert, animated: true, completion: nil)
+        guard password.count > 7 else {
+            labelError.isHidden = false
             return
         }
 
+        labelError.isHidden = true
+
         guard self.login == login && self.password == password else {
-            let alert = UIAlertController(title: "Acces denied", message: "You didn't write correct login or password", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Invalid login or password", message: "Please, enter correct login and password", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default))
             self.present(alert, animated: true, completion: nil)
             return
