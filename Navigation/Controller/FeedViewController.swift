@@ -13,7 +13,7 @@ final class FeedViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 12
-        button.setTitle("Go", for: .normal)
+        button.setTitle("Post number one", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -25,7 +25,7 @@ final class FeedViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 12
-        button.setTitle("Push", for: .normal)
+        button.setTitle("Post number two", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
